@@ -1,0 +1,17 @@
+/*
+Colorblind safe color palette from colorbrewer2.org.
+#92c5de - light blue
+#0571b0 - blue
+#f7f7f7 - white
+*/
+
+body {
+    background-color: #92c5de;
+    color: #0571b0;
+    text-align: center
+}
+
+h1 {
+    color: #f7f7f7
+}
+
