@@ -2,33 +2,36 @@
 <html>
     <head>
         <title>Ryan Freed</title>
+        <!-- All styling for this document are contained in this 
+        external css file -->
         <link rel="stylesheet" type="text/css" href="css/main_style.css">
     </head>
-        <h1>
+    <body>
+        <div id="body-container">
+            <div id="header">
             Hello, my name is Ryan Freed!
-        </h1>
+        </div>
 
-        <img src=images/rfreed.jpg width = 500px height = 500px /> 
+        <div id="profile-picture">
+            <img src=images/rfreed.jpg width = 500px height = 500px /> 
+        </div>
 
-        <p>
+        <div id="welcome-text">
             Welcome to my webpage. <br>
             I am a student in the <a href ="https://www.clarku.edu/academics/graduate/programs/masters/geographic-information-science/">
             MsGIS Program </a> at <a href ="https://www.clarku.edu/">Clark University</a>.
-        </p>
+        </div>
 
-        <p>
+        <div id="research-interests">
             <h3>Research Interests</h3>
             <ol>
                 <li>GIS Workflow Automation in Python</li>
                 <li>Web Mapping</li>
                 <li>Machine Learning</li>
             </ol>
-        </p>
+        </div>
 
-    <body>
-        
-        
-    <p id ="demo">A paragraph</p>
+
     <button type ="button" onclick="myFunction()">Try it</button>
     <script>
         function myFunction() {
