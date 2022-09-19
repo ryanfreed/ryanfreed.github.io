@@ -20,6 +20,15 @@ h1 {
     margin: 0;
 }
 
+footer {
+    color: white;
+    text-align: center;
+    background-color: #175579;
+    margin: 400px; 
+    border: 2px solid #175579;
+    border-radius: 25px;
+}
+
 /* makes a rounded border 
 and container for my text attached to the first body tag */
 #body-container {
