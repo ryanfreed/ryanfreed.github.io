@@ -44,6 +44,9 @@ and container for my text attached to the first body tag */
 /* adds a blue bar at the top of the webpage */
 #header {
     background-color: #0571b0;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
 }
 
 /* aligned the profile picture with the left side of the page */
