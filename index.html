@@ -47,7 +47,14 @@
     </body>
 
     <footer>
-        <p> © 2022 by Ryan Freed</p>
+        <script>
+            // Declare date variable using the current date from browser.
+            var today = new Date();
+            // Declare full year variable getting the current year from browser.
+            var year = today.getFullYear();
+            // Write the copyright year to the page.
+            document.writeln("Copyright &copy; " + year);
+        </script>
     </footer>
 
 </html>
