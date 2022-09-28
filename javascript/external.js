@@ -47,5 +47,5 @@
 // }
 
 
-let askName = window.prompt("Please enter your name. ")
-document.write(askName)
+let askName = window.prompt("Please enter your name. ");
+document.write(`Hello, welcome to my webpage ${askName}!`);
