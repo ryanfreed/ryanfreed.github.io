@@ -20,14 +20,22 @@ h1 {
     margin: 0;
 }
 
-footer {
+#footer {
     color: white;
     text-align: center;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
     background-color: #175579;
-    margin: 400px; 
     border: 2px solid #175579;
     border-radius: 25px;
 }
+
+.footer,
+.push {
+    height: 25px;
+}
+
 
 /* makes a rounded border 
 and container for my text attached to the first body tag */
