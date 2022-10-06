@@ -65,7 +65,13 @@ to distinguish the two, as the font sizes are the same */
 and added relative positioning based on the size of the window */
 #research-interests {
     text-align: left;
-    font-size: 25px;
+    font-size: 20px;
     position: relative;
     left: 50px;
+}
+
+#webmap-reviews{
+    text-align: left;
+    font-size: 25px;
+    position: relative;
 }
