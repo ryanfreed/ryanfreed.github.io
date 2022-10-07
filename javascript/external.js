@@ -59,7 +59,15 @@ var webmaps =
     ["Texas Ecosystems Analytical Mapper",
     "http://towd.texas.gov/gis/teamr",
     "The Texas Parks and Wildlife's Landscape Ecology program developed"
-    ]  
+    ],
+    ["Oil Spill Toolkit",
+    "https://www.glo.texas.gov/ost/-",
+    "The Oil Spill Toolkit developed by Enterprise Technology Solutions"
+    ],
+    ["Texas Ecosystems Analytical Mapper",
+    "http://towd.texas.gov/gis/teamr",
+    "The Texas Parks and Wildlife's Landscape Ecology program developed"
+    ]    
 ];
 
 
