@@ -3,7 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="" width="device-width", initial-scale=1.9›
-        <link rel="stylesheet"
+        
+    <!--         
+    <link rel="stylesheet"
             href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
             integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
             crossorigin=""/>
@@ -12,7 +14,20 @@
             src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
             integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
             crossorigin="">
-        </script>
+        </script> 
+        -->
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+        crossorigin=""/>
+
+        <!-- This goes after the css link! -->
+        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+        crossorigin=""></script>
+   
+
+
 
         <script src="javascript/external.js"></script>   
         <script src="javascript/secret_keys.js"></script> 
@@ -65,7 +80,7 @@
                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',{
                     maxZoom: 18,
                     id: 'mapbox/streets-v11',
-                    accessToken: mapbox_access_token,
+                    accessToken: mykey,
                 }).addTo(mymap);
             </script>
         </div>
