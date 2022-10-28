@@ -41,7 +41,7 @@ and container for my text attached to the first body tag */
     height: 100vh;
     border: 2px solid #f7f7f7;
     border-radius: 25px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* adds a blue bar at the top of the webpage */

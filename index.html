@@ -1,7 +1,21 @@
 <!doctype html>
 <html>
     <head>
-        <script src = "javascript/external.js"><</script>    
+        <meta charset="utf-8">
+        <meta name="viewport" content="" width="device-width", initial-scale=1.9›
+        <link rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+            integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+            crossorigin=""/>
+
+        <script
+            src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+            integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+            crossorigin="">
+        </script>
+
+        <script src="javascript/external.js"></script>   
+        <script src="javascript/secret_keys.js"></script> 
         <title>Ryan Freed</title>
         <!-- All styling for this document are contained in this 
         external css file -->
@@ -42,6 +56,20 @@
             </script>
         </div>
 
+        <h3>My First Webmap</h3>
+ 
+        <div id="mapid" style="width: 600px; height: 400px; margin: auto;">
+            <script>
+                var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+                
+                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',{
+                    maxZoom: 18,
+                    id: 'mapbox/streets-v11',
+                    accessToken: mapbox_access_token,
+                }).addTo(mymap);
+            </script>
+        </div>
+
         <div id = "area-calculator">
             <h3> Input length and width of rectangle: </h3>
             <form>
@@ -55,10 +83,12 @@
 
             <button onclick ="calculate_rectangle()">Calculate</button>
         </div>
+
+        <br>
         
-        <br>
-        <br>
-        <br>
+        <div>
+            <a href="./choro_map.html"><b>Click me!</b></a>
+        </div>
         
         <div>
         <footer>
