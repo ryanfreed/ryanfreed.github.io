@@ -20,22 +20,36 @@
     <script src="https://js.arcgis.com/4.21/"></script>
 
     <script>
-        require(["esri/config", "esri/Map", "esri/views/MapView"], function (esriConfig, Map, MapView) { 
+        require(["esri/config", 
+                 "esri/Map", 
+                 "esri/views/MapView", 
+                 "esri/layers/FeatureLayer"
+                
+                ], function (esriConfig, Map, MapView, FeatureLayer) { 
 
             esriConfig.apiKey = "AAPK448270abe3a64414aaa2c38e730fb859Ffrbs65PYpviGTNETffeqWo_ev0KJRBXLapjnoMO5z5LalNmoeu0dMq4Pk_N07Ph";
-            
+        
             const map = new Map({
-                basemap: "arcgis-topographic"
+              basemap: "arcgis-terrain"
             });
 
             const view = new MapView({
                 map: map,
                 container: "viewDiv",
-                zoom: 4,
-                center: [15, 65]
-            })
+                zoom: 4
+            });
+
+            const layer = new FeatureLayer({
+                url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/HUD_Regions/FeatureServer/0"
+            });
+
+        // changing viewport params to center on the United States
+        view.center = [-112, 38];
+        view.zoom = 5;
+        view.scale = 1000;
+        map.add(layer)
       });
-    </script>
+      </script>
   </head>
   <body>
     <div id="viewDiv"></div>

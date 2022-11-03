@@ -2,9 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="" width="device-width", initial-scale=1.9›
-        
-    <!--         
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"›
+     
+ 
+
     <link rel="stylesheet"
             href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
             integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
@@ -15,20 +16,21 @@
             integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
             crossorigin="">
         </script> 
-        -->
+
 
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
         integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
         crossorigin=""/>
 
+        <link rel="stylesheet" 
+              type="text/css" 
+              href="css/map_style.css"/>   
+
         <!-- This goes after the css link! -->
         <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
         integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
         crossorigin=""></script>
-   
-
-
-
+ 
         <script src="javascript/external.js"></script>   
         <script src="javascript/secret_keys.js"></script> 
         <title>Ryan Freed</title>
@@ -82,10 +84,42 @@
                     id: 'mapbox/streets-v11',
                     accessToken: mykey,
                 }).addTo(mymap);
+
+                var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+                var circle = L.circle([51.508, -0.11], { 
+                    color: 'red', 
+                    fillColor: '#f03',
+                    fillOpacity: 0.5,
+                    radius: 500
+                }).addTo(mymap);
+
+                var polygon = L.polygon([
+                    [51.509, -0.08],
+                    [51.503, -0.06],
+                    [51.51, -0.047]
+                ]).addTo(mymap);
+
+                marker.on('click', function(e){ 
+                    mymap.setView(e.latlng, 14);
+                });
+
+                circle.on('click', function(e){ 
+                    mymap.setView(e.latlng, 13);
+                });
+
+                polygon.on('click', function(e){ 
+                    mymap.setView(e.latlng, 13);
+                });
+
+                marker.bindPopup("<b>Hello World!</b><br>I am a popup.").openPopup();
+                circle.bindPopup("I am a circle.");
+                polygon.bindPopup("I am a polygon.");
             </script>
         </div>
 
-        <div id = "area-calculator">
+<!---  Disabling for Leaflet assignment 
+    <div id = "area-calculator">
             <h3> Input length and width of rectangle: </h3>
             <form>
                 <label for="length">Length:</label><br>
@@ -98,6 +132,7 @@
 
             <button onclick ="calculate_rectangle()">Calculate</button>
         </div>
+-->
 
         <br>
         
