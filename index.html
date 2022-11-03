@@ -78,12 +78,17 @@
         <div id="mapid" style="width: 600px; height: 400px; margin: auto;">
             <script>
                 var mymap = L.map('mapid');
-                
+               
+                /* Tile Layer coming from Mapbox 
+
                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',{
                     maxZoom: 18,
                     id: 'mapbox/satellite-streets-v11',
                     accessToken: mykey,
                 }).addTo(mymap);
+                */
+
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(mymap)
 
                 var marker = L.marker([51.5, -0.09]).addTo(mymap);
 
