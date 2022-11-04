@@ -4,6 +4,8 @@ var mymap = L.map('mapid', {
     fullscreenControlOptions: {
         position: 'bottomleft' } 
 });
+
+L.control.resizer({ direction: 'e '}).addTo(mymap);
       
 var options = { 
     key: geocoder_api_key,
