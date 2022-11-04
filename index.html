@@ -4,40 +4,38 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"›
      
- 
+        <link rel="stylesheet" 
+        type="text/css" 
+        href="css/map_style.css"/>   
 
-    <link rel="stylesheet"
+        <link rel="stylesheet"
             href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
             integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
             crossorigin=""/>
 
-        <script
-            src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
-            integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
-            crossorigin="">
-        </script> 
-
-
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
-        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-        crossorigin=""/>
-
+    
         <link rel="stylesheet" 
-              type="text/css" 
-              href="css/map_style.css"/>   
+            href="https://cdn.jsdelivr.net/gh/opencagedata/leaflet-opencage-search@d4cbd36122efc8d17152b4177ed0e12165305441/dist/css/L.Control.OpenCageData.Search.min.css" />
+     
 
-        <!-- This goes after the css link! -->
+        <!-- API CALLS -->
         <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
         integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
         crossorigin=""></script>
- 
+
+        
+        <script src="https://cdn.jsdelivr.net/gh/opencagedata/leaflet-opencage-search@d4cbd36122efc8d17152b4177ed0e12165305441/dist/js/L.Control.OpenCageSearch.min.js"></script>
+        
+
         <script src="javascript/external.js"></script>   
         <script src="javascript/secret_keys.js"></script> 
+
         <title>Ryan Freed</title>
         <!-- All styling for this document are contained in this 
         external css file -->
         <link rel="stylesheet" type="text/css" href="css/main_style.css">
     </head>
+
     <body>
         <div id="body-container">
             <div id="header">
@@ -76,68 +74,7 @@
         <h3>My First Webmap</h3>
  
         <div id="mapid" style="width: 600px; height: 400px; margin: auto;">
-            <script>
-                var mymap = L.map('mapid');
-               
-                /* Tile Layer coming from Mapbox 
-
-                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',{
-                    maxZoom: 18,
-                    id: 'mapbox/satellite-streets-v11',
-                    accessToken: mykey,
-                }).addTo(mymap);
-                */
-
-                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(mymap)
-
-                var marker = L.marker([51.5, -0.09]).addTo(mymap);
-
-                var circle = L.circle([51.508, -0.11], { 
-                    color: 'red', 
-                    fillColor: '#f03',
-                    fillOpacity: 0.5,
-                    radius: 500
-                }).addTo(mymap);
-
-                var polygon = L.polygon([
-                    [51.509, -0.08],
-                    [51.503, -0.06],
-                    [51.51, -0.047]
-                ]).addTo(mymap);
-
-                marker.on('click', function(e){ 
-                    mymap.setView(e.latlng, 14);
-                });
-
-                circle.on('click', function(e){ 
-                    mymap.setView(e.latlng, 13);
-                });
-
-                polygon.on('click', function(e){ 
-                    mymap.setView(e.latlng, 13);
-                });
-
-                marker.bindPopup("<b>Hello World!</b><br>I am a popup.").openPopup();
-                circle.bindPopup("I am a circle.");
-                polygon.bindPopup("I am a polygon.");
-
-                var ZoomViewer = L.Control.extend({ 
-                    onAdd: function(){ 
-                        var gauge = L.DomUtil.create('div');
-                        gauge.style.width = '200px';
-                        gauge.style.background = 'rgba(255,255,255,0.5)';
-                        gauge.style.textAlign = 'left';
-                        mymap.on('zoomstart zoom zoomend', function(ev){ 
-                            gauge.innerHTML = 'Zoom level: ' + mymap.getZoom();
-                        })
-                        return gauge;
-                    }
-                });
-
-                (new ZoomViewer).addTo(mymap);
-                
-                mymap.setView([0, 0], 1);
-            </script>
+            <script src="javascript/map.js"></script>
         </div>
 
 <!---  Disabling for Leaflet assignment 
