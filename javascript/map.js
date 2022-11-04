@@ -1,10 +1,14 @@
 
+
+
 var mymap = L.map('mapid');
       
 var options = { 
     key: geocoder_api_key,
     limit: 10
 };
+
+L.MakiMarkers.accessToken = "pk.eyJ1IjoicmZyZWVkOSIsImEiOiJjbDlyNHFzbzEwZDJuM3BxbWRkbWtjOHg1In0.F56pnzbTYLLWvdairiMZfA"
 
 /*var control = L.Control.openCageSearch(options).addTo(mymap);
 /*
@@ -21,14 +25,56 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(mymap)
 
 
-var tajMahal_marker = L.marker([27.174961, 78.042385]).addTo(mymap);
-var greatWall_marker = L.marker([40.334245, 116.477652]).addTo(mymap);
-var petra_marker = L.marker([30.328611, 35.441944]).addTo(mymap);
-var redeemer_marker = L.marker([-22.951389, -43.2108334]).addTo(mymap);
-var machuPicchu_marker = L.marker([-13.163056, -72.545556]).addTo(mymap);
-var chichenItza_marker = L.marker([20.682778, -88.569167]).addTo(mymap);
-var colosseum_marker = L.marker([41.890169, 12.492269]).addTo(mymap);
+var tajMahal_icon = L.MakiMarkers.icon({
+    icon: "religious-muslim",
+    color: "#3285a8", /* light blue */
+    size: "m"
+})
+var tajMahal_marker = L.marker([27.174961, 78.042385], {icon: tajMahal_icon}).addTo(mymap);
 
+var greatWall_icon = L.MakiMarkers.icon({
+    icon: "historic",
+    color: "red",
+    size: "m"
+})
+var greatWall_marker = L.marker([40.334245, 116.477652], {icon: greatWall_icon}).addTo(mymap);
+
+var petra_icon = L.MakiMarkers.icon({
+    icon: "city",
+    color: "#8132a8", /* purple */
+    size: "m"
+})
+var petra_marker = L.marker([30.328611, 35.441944], {icon: petra_icon}).addTo(mymap);
+
+var redeemer_icon = L.MakiMarkers.icon({
+    icon: "religious-christian",
+    color: "green",
+    size: "m"
+})
+var redeemer_marker = L.marker([-22.951389, -43.2108334], {icon: redeemer_icon}).addTo(mymap);
+
+var machuPicchu_icon = L.MakiMarkers.icon({ 
+    icon: "mountain",
+    color: "orange",
+    size: "m"
+})
+var machuPicchu_marker = L.marker([-13.163056, -72.545556], {icon: machuPicchu_icon}).addTo(mymap);
+
+var chichenItza_icon = L.MakiMarkers.icon({
+    icon: "triangle",
+    color: "#a89532",
+    size: "m"
+})
+var chichenItza_marker = L.marker([20.682778, -88.569167], {icon: chichenItza_icon}).addTo(mymap);
+
+var colosseum_icon = L.MakiMarkers.icon({
+    icon: "stadium",
+    color: "#a83262",
+    size: "m"
+})
+var colosseum_marker = L.marker([41.890169, 12.492269], {icon: colosseum_icon}).addTo(mymap);
+
+/*
 var circle = L.circle([51.508, -0.11], { 
     color: 'red', 
     fillColor: '#f03',
@@ -48,10 +94,6 @@ var polyline = L.polyline([
     [51.507, -0.047]
 ]).addTo(mymap)
 
-marker.on('click', function(e){ 
-    mymap.setView(e.latlng, 14);
-});
-
 circle.on('click', function(e){ 
     mymap.setView(e.latlng, 13);
 });
@@ -60,9 +102,9 @@ polygon.on('click', function(e){
     mymap.setView(e.latlng, 13);
 });
 
-marker.bindPopup("<b>Hello World!</b><br>I am a popup.").openPopup();
 circle.bindPopup("I am a circle.");
 polygon.bindPopup("I am a polygon.");
+*/
 
 var ZoomViewer = L.Control.extend({ 
     onAdd: function(){ 
