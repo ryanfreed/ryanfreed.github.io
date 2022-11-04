@@ -1,7 +1,9 @@
 
-
-
-var mymap = L.map('mapid');
+var mymap = L.map('mapid', { 
+    fullscreenControl: true,
+    fullscreenControlOptions: {
+        position: 'bottomleft' } 
+});
       
 var options = { 
     key: geocoder_api_key,
