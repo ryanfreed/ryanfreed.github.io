@@ -5,12 +5,17 @@ var mymap = L.map('mapid', {
         position: 'bottomleft' } 
 });
 
-L.control.resizer({ direction: 'e '}).addTo(mymap);
+L.control.resizer({ direction: 'e'}).addTo(mymap);
       
 var options = { 
     key: geocoder_api_key,
     limit: 10
 };
+
+var searchbox = L.control.searchbox({
+    position: 'topright',
+    expand: 'left'
+}).addTo(mymap);
 
 L.MakiMarkers.accessToken = "pk.eyJ1IjoicmZyZWVkOSIsImEiOiJjbDlyNHFzbzEwZDJuM3BxbWRkbWtjOHg1In0.F56pnzbTYLLWvdairiMZfA"
 
