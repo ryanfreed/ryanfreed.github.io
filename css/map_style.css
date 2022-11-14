@@ -1,4 +1,48 @@
-.leaflet-popup-content-wrapper,
-.leaflet-popup-tip{
-    background: yellow;
+.tajMahal-popup .leaflet-popup-tip, 
+.tajMahal-popup .leaflet-popup-content-wrapper {
+    background: #3285a8;
+    color: white;
+    border-radius: 12px;
+}
+
+.greatWall-popup .leaflet-popup-tip,
+.greatWall-popup .leaflet-popup-content-wrapper{
+    background: red;
+    color: white;
+    border-radius: 12px;
+}
+
+.petra-popup .leaflet-popup-tip, 
+.petra-popup .leaflet-popup-content-wrapper{ 
+    background: #8132a8;
+    color: white;
+    border-radius: 12px;
+}
+
+.redeemer-popup .leaflet-popup-tip, 
+.redeemer-popup .leaflet-popup-content-wrapper{ 
+    background: green;
+    color: white;
+    border-radius: 12px;
+}
+
+.machuPicchu-popup .leaflet-popup-tip, 
+.machuPicchu-popup .leaflet-popup-content-wrapper{ 
+    background: orange;
+    color: white;
+    border-radius: 12px;
+}
+
+.chichenItza-popup .leaflet-popup-tip, 
+.chichenItza-popup .leaflet-popup-content-wrapper{
+    background: #a89532;
+    color: white;
+    border-radius: 12px;
+}
+
+.colosseum-popup .leaflet-popup-tip, 
+.colosseum-popup .leaflet-popup-content-wrapper{
+    background: #a83262;
+    color: white;
+    border-radius: 12px;
 }

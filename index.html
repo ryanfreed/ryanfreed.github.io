@@ -1,28 +1,29 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"›
-     
-        <link rel="stylesheet" 
-        type="text/css" 
-        href="css/map_style.css"/>   
-
         <link rel="stylesheet"
             href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
             integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
             crossorigin=""/> 
-    
+
         <link rel="stylesheet" 
             href="https://cdn.jsdelivr.net/gh/opencagedata/leaflet-opencage-search@d4cbd36122efc8d17152b4177ed0e12165305441/dist/css/L.Control.OpenCageData.Search.min.css" />
- 
+        
+        <link rel="stylesheet" href="css/Control.FullScreen.css" />
+        <link rel="stylesheet" href="css/L.Control.Resizer.css" />
+        <link rel="stylesheet" href="css/Leaflet.AnimatedSearchBox.css" >
+
         <!-- API CALLS -->
         <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
             integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
             crossorigin=""></script>
-        
+    
         <script src="https://cdn.jsdelivr.net/gh/opencagedata/leaflet-opencage-search@d4cbd36122efc8d17152b4177ed0e12165305441/dist/js/L.Control.OpenCageSearch.min.js"></script>
         <script src="javascript/Leaflet.MakiMarkers.js"></script>
+
+        <script src="javascript/Control.FullScreen.js"></script>
+        <script src="javascript/L.Control.Resizer.js"></script>
+        <script src="javascript/Leaflet.AnimatedSearchBox.js"></script>
 
         <script src="javascript/external.js"></script>   
         <script src="javascript/secret_keys.js"></script> 
@@ -68,9 +69,10 @@
             </script>
         </div>
 
-        <h3>My First Webmap</h3>
+        <h3>Ancient Wonders of the World </h3>
  
-        <div id="mapid" style="width: 600px; height: 400px; margin: auto;">
+        <div id="mapid" style="width: 600px; height: 400px; margin: auto;">   
+            <link rel="stylesheet" type="text/css" href="css/map_style.css" >
             <script src="javascript/map.js"></script>
         </div>
 
