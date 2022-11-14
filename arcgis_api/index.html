@@ -29,26 +29,80 @@
 
             esriConfig.apiKey = "AAPK448270abe3a64414aaa2c38e730fb859Ffrbs65PYpviGTNETffeqWo_ev0KJRBXLapjnoMO5z5LalNmoeu0dMq4Pk_N07Ph";
         
-            const map = new Map({
-              basemap: "arcgis-terrain"
-            });
+        const map = new Map({
+          basemap: "arcgis-terrain"
+        });
 
-            const view = new MapView({
-                map: map,
-                container: "viewDiv",
-                zoom: 4
-            });
+        const view = new MapView({
+            map: map,
+            container: "viewDiv"
+        });
 
-            const layer = new FeatureLayer({
-                url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/HUD_Regions/FeatureServer/0"
-            });
-
-        // changing viewport params to center on the United States
-        view.center = [-112, 38];
-        view.zoom = 5;
-        view.scale = 1000;
-        map.add(layer)
+      // Get query layer and set up query
+      const parcelLayer = new FeatureLayer({
+              url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/LA_County_Parcels/FeatureServer/0",
       });
+
+
+      // changing viewport params to center on the United States
+      view.center =  [-118.80543,34.03000];
+      view.zoom = 13;
+      view.scale = 1000;
+      });
+
+      // SQL query array
+      const parcelLayerSQL = ["Choose a SQL where clause...", 
+                              "UseType = 'Residential'",  "UseType = 'Government'", 
+                              "UseType = 'Irrigated Farm'", "TaxRateArea = 10853", 
+                              "TaxRateArea = 10860", "TaxRateArea = 08637", 
+                              "Roll_LandValue > 1000000", "Roll_LandValue < 1000000"];
+      let whereClause = parcelLayerSQL[0];
+
+      // Add SQL UI
+      const select = document.createElement("select","");
+      select.setAttribute("class", "esri-widget esri-select");
+      select.setAttribute("style", "width: 200px; font-family: 'Avenir Next'; font-size: 1em");
+      parcelLayerSQL.forEach(function(query){
+        let option = document.createElement("option");
+        option.innerHTML = query;
+        option.value = query;
+        select.appendChild(option);
+      });
+    
+      view.ui.add(select, "top-right");
+
+
+      // Listen for changes
+
+      select.addEventListener('change', (event) => {
+        whereClause = event.target.value;
+
+        queryFeatureLayer(view.extent);
+
+      });
+
+      function queryFeatureLayer(extent) {
+
+      const parcelQuery = {
+      where: whereClause,  // Set by select element
+      spatialRelationship: "intersects", // Relationship operation to apply
+      geometry: extent, // Restricted to visible extent of the map
+      outFields: ["APN","UseType","TaxRateCity","Roll_LandValue"], // Attributes to return
+      returnGeometry: true
+      };
+
+      parcelLayer.queryFeatures(parcelQuery)
+
+      .then((results) => {
+
+        console.log("Feature count: " + results.features.length)
+
+        displayResults(results);
+
+      }).catch((error) => {
+        console.log(error.error);
+      });
+    }
       </script>
   </head>
   <body>
