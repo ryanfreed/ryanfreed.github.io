@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>On Event</title>
+    <title>Basemap Gallery</title>
     <style> html, body, #viewDiv {
         padding: 0;
         margin: 0;
@@ -13,17 +13,23 @@
     </style>
     
     <!-- Import the releveant APIs -->
-    <link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/css/esri.css">
-    <script src="https://js.arcgis.com/4.13/"></script>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.21/"></script>
 
     <script>
     require([
+        "esri/config",
         "esri/Map",
         "esri/views/MapView",
         "esri/layers/TileLayer",
         "esri/layers/MapImageLayer",
-        ], function(Map, MapView, TileLayer, MapImageLayer){
-            var map = new Map({ basemap: "dark-gray"
+        "esri/widgets/BasemapGallery"
+        ], function (esriConfig, Map, MapView, TileLayer, MapImageLayer, BasemapGallery) {
+
+        esriConfig.apiKey = "AAPK448270abe3a64414aaa2c38e730fb859Ffrbs65PYpviGTNETffeqWo_ev0KJRBXLapjnoMO5z5LalNmoeu0dMq4Pk_N07Ph";
+
+        var map = new Map({ 
+            basemap: "dark-gray"
         });
 
         // Renderer is the web visualization of a data layer. In this renderer, it is going to be 
@@ -70,7 +76,18 @@
         function eventHandler(event) {
             console.log("You just triggered a 'click' event!");
             alert("You just triggered a 'click' event!")
-        }
+        };
+
+        // Adds basemap gallery object based on the view object
+        var basemapGallery = new BasemapGallery({ 
+            view: view
+        });
+
+        // Adds gallery weidget to the UI
+        view.ui.add(basemapGallery, {
+            position: "top-right"
+        });
+
     });
 
     </script>
