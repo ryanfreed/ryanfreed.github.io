@@ -23,7 +23,9 @@
         "esri/views/MapView",
         "esri/layers/FeatureLayer",
         "esri/layers/TileLayer",
-        ], function(esriConfig, Map, MapView, FeatureLayer, TileLayer, Query) {
+        "esri/widgets/Search",
+
+        ], function(esriConfig, Map, MapView, FeatureLayer, TileLayer, Search) {
 
             esriConfig.apiKey = "AAPK448270abe3a64414aaa2c38e730fb859Ffrbs65PYpviGTNETffeqWo_ev0KJRBXLapjnoMO5z5LalNmoeu0dMq4Pk_N07Ph";
 
@@ -38,6 +40,15 @@
             center: [-103.46, 44.58]
         });
 
+        let searchWidget = new Search({
+            view: view
+        });
+
+        view.ui.add(searchWidget, { 
+            position: "bottom-left",
+            index: 2
+        });
+
         // Create assemply districts feature layer and basemap tile layer
         let assemblyDists = new FeatureLayer({
             url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/ArcGIS/rest/services/State_Legislative_Districts_Lower_Houses_v1/FeatureServer/0"});
@@ -45,8 +56,9 @@
             function queryFeatureLayer(extent) { 
 
                 const assemblyQuery = { 
-                    where: `STATE = ${whereClause}`, // Set by value associated with select element as key
+                    where: `STATE = "${whereClause}"`, // Set by value associated with select element as key
                     geometry: extent,
+                    spatialRelationship: "intersects",
                     outFields: ["STATE"],
                     returnGeometry: true
                 }; 
@@ -54,16 +66,31 @@
                 assemblyDists.queryFeatures(assemblyQuery)
 
                 .then((results) => {
-                    
-                    console.log(results) 
-                    
+                                        
                     displayResults(results);
                 
                 }).catch((error) => { 
-                    console.log(error.error);
+                   console.log(error.error);
                 });
         
             }
+
+            function displayResults(results) { 
+                let symbol = { 
+                   type: "simple-fill",
+                   color: [20, 130, 200, 0.5],
+                   outline: { 
+                    color: "red",
+                    width: .5
+                   }
+                };
+
+                results.features.map((feature) => { 
+                    feature.symbol = symbol;
+                    return feature;
+                });
+                }
+        
                     
 
         let baseTiles = new TileLayer({
@@ -105,7 +132,8 @@
 
         // listen for changes to selection
         select.addEventListener('change', (event) => { 
-            whereClause = stateAndFips[event.target.value];
+            let text = String(event.target.value)
+            whereClause = stateAndFips.text;
 
             queryFeatureLayer(view.extent);
         });
